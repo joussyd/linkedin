@@ -23,6 +23,8 @@ class Oauth extends Base
      * @param string $client_id      The Client id
      * @param string $client_secret  The Client secret
      * @param string $redirect_uri   The Client redirect Uri
+     * @param string $scope          The request's scope
+     * @param string $format         The response format
      * @return string
      */
     public function __construct($client_id, $client_secret, $redirect_uri, $scope, $format)
@@ -71,7 +73,7 @@ class Oauth extends Base
         $login_url = self::LINKEDIN_AUTH 
             . '?response_type=' . self::RESPONSE_TYPE
             . '&client_id='. $this->client_id 
-            . '&redirect_uri='. $this->redirect_url 
+            . '&redirect_uri='. $this->redirect_uri
             . '&state=' . self::STATE;
 
         // return login url
@@ -118,6 +120,6 @@ class Oauth extends Base
      */
     public function getUserInfo($access_token)
     {
-        return User::_getUserInfo($access_token);
+        return User::_getUserInfo($access_token, $this->scope, $this->format);
     }
 }

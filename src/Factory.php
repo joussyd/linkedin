@@ -1,23 +1,25 @@
 <?php
 
-namespace Redscript\Google;
-use Redscript\Google\Util;
-use Redscript\Google\User;
-use Redscript\Google\Oauth;
+namespace Redscript\LinkedIn;
+use Redscript\LinkedIn\Util;
+use Redscript\LinkedIn\User;
+use Redscript\LinkedIn\Oauth;
 
 class Factory extends Base
 {
      /**
-     * Google Auth
+     * LinkedIn Auth
      *
-     * @param string $client_id The Client's id
+     * @param string $client_id     The Client's id
      * @param string $client_secret The Client's secret
-     * @param string $redirect_uri The Client's redirect uri
+     * @param string $redirect_uri  The Client's redirect uri
+     * @param string $scope         The request's scope
+     * @param string $format        The response type
      * @return Oauth class
      */
-	public function auth($client_id, $client_secret, $redirect_uri)
+	public function auth($client_id, $client_secret, $redirect_uri, $scope, $format)
 	{
-		return new Oauth($client_id, $client_secret, $redirect_uri);
+		return new Oauth($client_id, $client_secret, $redirect_uri, $scope, $format);
 	}
 
      /**
