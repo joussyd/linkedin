@@ -44,12 +44,14 @@ class User extends Factory
     public function getProfile()
     {
         // set scope and format
-        $scope       = $this->scope;
+        $scope       = implode(',', $this->scope);
         $format      = $this->format;
         $accessToken = $this->accessToken;
 
         // Check if the access token is not empty
         if(! empty($accessToken)){
+
+            // build url
             $url = self::LINKED_API . '/~:(' . $scope . ')?format=' . $format;
 
             // If not empty, build settings

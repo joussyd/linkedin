@@ -99,8 +99,8 @@ class Auth extends Factory
 
         // query params
         $params = array(
-            'client_id' => $this->clientId,
-            'redirect_uri' => $this->redirectUri,
+            'client_id'     => $this->clientId,
+            'redirect_uri'  => $this->redirectUri,
             'client_secret' => $this->clientSecret,
             'code'          => $code,
             'grant_type'    => self::GRANT
@@ -117,7 +117,7 @@ class Auth extends Factory
         );
 
         // send request
-        $response = Factory::sendRequest($settings);
+        $response = $this->sendRequest($settings);
 
         // check token
         if(!array_key_exists('access_token', $response)){
